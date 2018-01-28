@@ -1,5 +1,22 @@
-# Config data exposed by config server
+server:
+  port: 9098
 
-info:
-  foo: bar
-  someList: [2, 3, 7]
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 1
+    leaseExpirationDurationInSeconds: 2
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:8761/eureka/
+    healthcheck:
+      enabled: true
+    lease:
+      duration: 5
+
+spring:
+  application:
+    name: case-service
+
+case:
+  queue:
+    url: http://35.224.106.54:6060/connector/kafka/consumer
